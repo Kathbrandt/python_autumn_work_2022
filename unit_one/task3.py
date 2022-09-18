@@ -4,4 +4,5 @@ age = 36.6
 temperature = 25
 new_age = temperature
 new_temp = age
-print("age =", new_age, ";",  "temperature =", new_temp)
+#print("age =", new_age, ";",  "temperature =", new_temp)
+print(f"age = {new_age} ; temperature = {new_temp}")
