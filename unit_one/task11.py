@@ -3,6 +3,6 @@
 year = int(input("Введите номер года (положительное целое число)"))
 if year > 0 :
     century = year // 100 + 1
-    print("{year} это {century} столетие")
+    print(f"{year} это {century} столетие")
 else:
     print("Положительное целое число, пожалуйста")
