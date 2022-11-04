@@ -38,21 +38,15 @@ print("Список продуктов, заказываемых у одного
 
 suppleir = input("Введите id поставщика:")
 
-SQL_INGREDIENTS_FROM_PROVIDER = f"""SELECT ingredient_id
-                                    FROM ingredient_providor
-                                    WHERE provider_id = '{supplier}'"""
+SQL_INGREDIENTS_FROM_PROVIDER = f"""SELECT tittle
+                                    FROM ingredient
+                                    WHERE fk_provider_id = '{supplier}'"""
 
 cursor.execute(SQL_INGREDIENTS_FROM_PROVIDER)
 
-ing_id = cursor.fetchall()
+ing_titles = cursor.fetchall()
 
-for id in ing_id:
-    SQL_INGREDIENTS_TITLES = f"""SELECT title
-                                 FROM ingredient
-                                 WHERE ingredient_id = '{id}'"""
-
-    cursor.execute(SQL_INGREDIENTS_TITLES)
-    ing_titles = cursor.fetchall()
+for row in ing_titles:
     print(ing_titles)
 
 print()
@@ -93,7 +87,7 @@ cursor.execute(SQL_MOST_POPULAR_PRODUCT_NAME)
 
 most_popular_name = cursor.fetchall()
 
-print(most_popular_name, "– наш самый популярный продукт, ее заказывает аибольшее количество поставщиков!")
+print(most_popular_name, "– наш самый популярный продукт, ее заказывает наибольшее количество поставщиков!")
 print()
 
 connection.close()

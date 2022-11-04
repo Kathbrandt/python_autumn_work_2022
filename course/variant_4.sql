@@ -13,6 +13,7 @@ CREATE TABLE "ingredient" (
 	"ingredient_id" integer PRIMARY KEY,
 	"title" text NOT NULL,
 	"price" integer NOT NULL,
+	"fk_provider_id" integer REFERENCES provider(provider_id) NOT NULL
 );
 
 
@@ -35,13 +36,6 @@ CREATE TABLE "buyer_product" (
 	"product_id" integer REFERENCES product(product_id),
 
 	CONSTRAINT "buyer_product_pk" PRIMARY KEY (buyer_id, product_id)
-);
-
-CREATE TABLE "ingredient_providor" (
-  "ingredient_id" integer REFERENCES ingredient(ingredient_id),
-	"provider_id" integer REFERENCES provider(provider_id),
-
-	CONSTRAINT "ingredient_providor_pk" PRIMARY KEY (ingredient_id, provider_id)
 );
 
 CREATE TABLE ingredient_product (
@@ -68,13 +62,13 @@ VALUES
 
 INSERT INTO ingredient
 VALUES
-(1, "Малина", 30),
-(2, "Клубника", 10),
-(3, "Ежевика", 20),
-(4, "Голубика", 20),
-(5, "Ананас", 10),
-(6, "Маскарпоне", 15),
-(7, "Корзиночка", 10);
+(1, "Малина", 30, 1),
+(2, "Клубника", 10, 1),
+(3, "Ежевика", 20, 1),
+(4, "Голубика", 20, 1),
+(5, "Ананас", 10, 3),
+(6, "Маскарпоне", 15, 4),
+(7, "Корзиночка", 10, 2);
 
 INSERT INTO buyer
 VALUES
@@ -98,16 +92,6 @@ VALUES
 (5,1),
 (5,5);
 
-INSERT INTO ingredient_providor
-VALUES
-(1,1),
-(2,1),
-(3,1),
-(4,1),
-(5,3),
-(6,4),
-(7,4),
-(7,2);
 
 INSERT INTO ingredient_product
 VALUES
