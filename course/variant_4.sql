@@ -2,47 +2,47 @@ CREATE DATABASE candy_factory;
 
 CREATE SCHEMA connections;
 
-CREATE TABLE "buyer" (
-	"buyer_id" integer PRIMARY KEY,
-	"title text" NOT NULL,
-	"phone" varchar(15) NULL,
+CREATE TABLE buyer (
+	buyer_id integer PRIMARY KEY,
+	title text NOT NULL,
+	phone varchar(15) NOT NULL
 );
 
 
-CREATE TABLE "ingredient" (
-	"ingredient_id" integer PRIMARY KEY,
-	"title" text NOT NULL,
-	"price" integer NOT NULL,
-	"fk_provider_id" integer REFERENCES provider(provider_id) NOT NULL
+CREATE TABLE ingredient (
+	ingredient_id integer PRIMARY KEY,
+	title text NOT NULL,
+	price integer NOT NULL,
+	fk_provider_id integer REFERENCES provider(provider_id) NOT NULL
 );
 
 
-CREATE TABLE "product" (
-	"product_id" integer PRIMARY KEY,
-	"title text" NOT NULL,
-	"description" text NOT NULL,
-	"price" integer NOT NULL,
+CREATE TABLE product (
+	product_id integer PRIMARY KEY,
+	title text NOT NULL,
+	description text NOT NULL,
+	price integer NOT NULL
 );
 
 
-CREATE TABLE "provider" (
-	"provide_id" integer PRIMARY KEY,
-	"title" text NOT NULL,
-	"phone" varchar(15) NOT NULL,
+CREATE TABLE provider (
+	provide_id integer PRIMARY KEY,
+	title text NOT NULL,
+	phone varchar(15) NOT NULL
 );
 
-CREATE TABLE "buyer_product" (
-	"buyer_id" integer REFERENCES buyer(buyer_id),
-	"product_id" integer REFERENCES product(product_id),
+CREATE TABLE buyer_product (
+	buyer_id integer REFERENCES buyer(buyer_id),
+	product_id integer REFERENCES product(product_id),
 
-	CONSTRAINT "buyer_product_pk" PRIMARY KEY (buyer_id, product_id)
+	CONSTRAINT buyer_product_pk PRIMARY KEY (buyer_id, product_id)
 );
 
 CREATE TABLE ingredient_product (
-  "ingredient_id" integer REFERENCES ingredient(ingredient_id),
-  "product_id" integer REFERENCES product(product_id),
+  ingredient_id integer REFERENCES ingredient(ingredient_id),
+  product_id integer REFERENCES product(product_id),
 
-	CONSTRAINT i"ngredient_product_pk" PRIMARY KEY (ingredient_id, product_id)
+	CONSTRAINT ingredient_product_pk PRIMARY KEY (ingredient_id, product_id)
 );
 
 INSERT INTO product
