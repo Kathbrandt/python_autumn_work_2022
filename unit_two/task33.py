@@ -36,8 +36,6 @@ result = cur.fetchall()
 if result = NULL:
     raise NullResultException()
 
-records = cur.fetchall()
-
 #  3. Произошел разрыв соединения с сервером
 class MyConnectionResetErrorException(ConnectionResetError):
     print("Произошел разрыв соединения с сервером.")
