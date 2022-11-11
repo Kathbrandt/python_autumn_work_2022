@@ -7,14 +7,28 @@
 #Сумма 4   комбинация [(1,3),(3,1),(2,2)]
 #........................................
 #Выводы комбинаций оформить в список кортежей.
-from intertools import combinations
 
-num = [1,2,3,4,5,6]
+mass = []
+count = 0
+a = 1
+b = 1
+sum = 0
+while count !=6**2:
+    if a < 7:
+        mass.append((a,b))
+        summ = a + b
+        b += 1
+        if b == 7:
+            a += 1
+            b = 1
+    count += 1
 
-dice_1 = combinations(num)
-dice_2 = combinations(num)
-
-for x in list(dice_1):
-    for y in list(dice_2):
-        sum = x+y
-        print(f"Кость 1: {x}, Кость 2: {y}, Сумма значений: {sum}.")
+new_mass = []
+count = 2
+while count < 13:
+    for i in mass:
+        if sum(i) == count:
+            new_mass.append(i)
+    print("сумма", count, new_mass)
+    new_mass.clear()
+    count += 1
